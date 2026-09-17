@@ -1,0 +1,229 @@
+/* The document's own CSS, written by hand since the frame has no Tailwind. It reads the way the
+   answer box does: prose in the prose face, tables in the interface face with figures of one width
+   and a rule under each row, square bullets with muted markers, links underlined in the text's own
+   color. The house style: square, one grey line (#e5e5e5), muted text at #737373. */
+
+.md-root {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: #fff;
+  color: #171717;
+  font: 13px/1.45 system-ui, -apple-system, sans-serif;
+}
+
+.md-scroll {
+  height: 100%;
+  overflow: auto;
+}
+
+.md-empty {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  color: #737373;
+}
+
+.md-doc {
+  padding: 16px 20px 24px;
+  font-family: Charter, 'Iowan Old Style', Georgia, ui-serif, serif;
+  font-size: 15px;
+  line-height: 1.55;
+  overflow-wrap: break-word;
+}
+
+/* Space above each block, none above the first in its container. */
+.md-doc :where(p, ul, ol, pre, blockquote, .md-table, .md-footnote) {
+  margin: 12px 0 0;
+}
+
+.md-doc :where(h1, h2, h3, h4, h5, h6) {
+  margin: 20px 0 0;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.md-doc :where(*) > :first-child {
+  margin-top: 0;
+}
+
+.md-doc > :first-child {
+  margin-top: 0;
+}
+
+.md-doc h1 {
+  font-size: 22px;
+}
+
+.md-doc h2 {
+  font-size: 18px;
+}
+
+.md-doc h3 {
+  font-size: 16px;
+}
+
+.md-doc :where(h4, h5, h6) {
+  font-size: 15px;
+}
+
+/* Prose lines stay readable in a wide element; tables and code take the whole width. */
+.md-doc :where(p, ul, ol, blockquote, h1, h2, h3, h4, h5, h6, .md-footnote) {
+  max-width: 80ch;
+}
+
+/* A line break inside a paragraph stays one, as it does in the answer box. */
+.md-doc :where(p, li, th, td) {
+  white-space: pre-line;
+}
+
+.md-doc .md-html {
+  white-space: pre-wrap;
+}
+
+.md-doc ul {
+  padding-left: 20px;
+  list-style: square;
+}
+
+.md-doc ol {
+  padding-left: 24px;
+  list-style: decimal;
+}
+
+.md-doc li + li,
+.md-doc li > :where(ul, ol) {
+  margin-top: 4px;
+}
+
+.md-doc li::marker {
+  color: #737373;
+}
+
+.md-doc .md-task-item {
+  list-style: none;
+}
+
+/* The box hangs where the bullet would be. */
+.md-task {
+  display: inline-block;
+  width: 1.3em;
+  margin-left: -1.3em;
+  color: #737373;
+}
+
+.md-doc code {
+  padding: 0 4px;
+  background: #f5f5f5;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85em;
+}
+
+.md-doc pre {
+  padding: 8px 12px;
+  background: #f5f5f5;
+  overflow-x: auto;
+  font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.md-doc pre code {
+  padding: 0;
+  background: none;
+  font-size: inherit;
+}
+
+.md-doc blockquote {
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 12px;
+  border-left: 2px solid #e5e5e5;
+  color: #737373;
+}
+
+.md-doc hr {
+  margin: 16px 0;
+  border: 0;
+  border-top: 1px solid #e5e5e5;
+}
+
+.md-doc a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: #737373;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.md-doc a:hover {
+  text-decoration-color: #171717;
+}
+
+.md-table {
+  overflow-x: auto;
+}
+
+.md-table table {
+  border-collapse: collapse;
+  font: 14px/1.45 system-ui, -apple-system, sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+.md-table th,
+.md-table td {
+  padding: 6px 12px;
+  border-bottom: 1px solid #e5e5e5;
+  vertical-align: top;
+}
+
+.md-table th {
+  font-weight: 600;
+  text-align: left;
+}
+
+.md-table :where(th, td):first-child {
+  padding-left: 0;
+}
+
+.md-table :where(th, td):last-child {
+  padding-right: 0;
+}
+
+.md-footnote-ref {
+  color: #737373;
+  font-size: 0.75em;
+}
+
+.md-footnote {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 6px;
+  color: #737373;
+  font-size: 13px;
+}
+
+/* Out of the way until the pointer is on the document. */
+.md-copy {
+  position: absolute;
+  top: 6px;
+  right: 14px;
+  padding: 2px 8px;
+  border: 1px solid #e5e5e5;
+  border-radius: 0;
+  background: #fff;
+  color: #737373;
+  font: 11px/16px system-ui, -apple-system, sans-serif;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 120ms;
+}
+
+.md-root:hover .md-copy,
+.md-copy:focus-visible {
+  opacity: 1;
+}
+
+.md-copy:hover {
+  color: #171717;
+}
