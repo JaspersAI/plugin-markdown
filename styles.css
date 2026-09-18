@@ -1,15 +1,17 @@
 /* The document's own CSS, written by hand since the frame has no Tailwind. It reads the way the
    answer box does: prose in the prose face, tables in the interface face with figures of one width
    and a rule under each row, square bullets with muted markers, links underlined in the text's own
-   color. The house style: square, one grey line (#e5e5e5), muted text at #737373. */
+   color. Colors are the app's theme variables, so the document follows its light and dark, each
+   with its light value as the fallback for an app from before the theme. The house style: square,
+   one grey line, muted secondary text. */
 
 .md-root {
   position: relative;
   height: 100%;
   width: 100%;
-  background: #fff;
-  color: #171717;
-  font: 13px/1.45 system-ui, -apple-system, sans-serif;
+  background: var(--jaspers-background, #fff);
+  color: var(--jaspers-foreground, #171717);
+  font: 13px/1.45 var(--jaspers-font-sans, system-ui, -apple-system, sans-serif);
 }
 
 .md-scroll {
@@ -23,12 +25,12 @@
   align-items: center;
   justify-content: center;
   margin: 0;
-  color: #737373;
+  color: var(--jaspers-muted-foreground, #737373);
 }
 
 .md-doc {
   padding: 16px 20px 24px;
-  font-family: Charter, 'Iowan Old Style', Georgia, ui-serif, serif;
+  font-family: var(--jaspers-font-prose, Charter, 'Iowan Old Style', Georgia, ui-serif, serif);
   font-size: 15px;
   line-height: 1.55;
   overflow-wrap: break-word;
@@ -99,7 +101,7 @@
 }
 
 .md-doc li::marker {
-  color: #737373;
+  color: var(--jaspers-muted-foreground, #737373);
 }
 
 .md-doc .md-task-item {
@@ -111,21 +113,21 @@
   display: inline-block;
   width: 1.3em;
   margin-left: -1.3em;
-  color: #737373;
+  color: var(--jaspers-muted-foreground, #737373);
 }
 
 .md-doc code {
   padding: 0 4px;
-  background: #f5f5f5;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  background: var(--jaspers-muted, #f5f5f5);
+  font-family: var(--jaspers-font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
   font-size: 0.85em;
 }
 
 .md-doc pre {
   padding: 8px 12px;
-  background: #f5f5f5;
+  background: var(--jaspers-muted, #f5f5f5);
   overflow-x: auto;
-  font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+  font: 13px/1.5 var(--jaspers-font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
 }
 
 .md-doc pre code {
@@ -138,26 +140,26 @@
   margin-left: 0;
   margin-right: 0;
   padding-left: 12px;
-  border-left: 2px solid #e5e5e5;
-  color: #737373;
+  border-left: 2px solid var(--jaspers-border, #e5e5e5);
+  color: var(--jaspers-muted-foreground, #737373);
 }
 
 .md-doc hr {
   margin: 16px 0;
   border: 0;
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid var(--jaspers-border, #e5e5e5);
 }
 
 .md-doc a {
   color: inherit;
   text-decoration: underline;
-  text-decoration-color: #737373;
+  text-decoration-color: var(--jaspers-muted-foreground, #737373);
   text-underline-offset: 2px;
   cursor: pointer;
 }
 
 .md-doc a:hover {
-  text-decoration-color: #171717;
+  text-decoration-color: var(--jaspers-foreground, #171717);
 }
 
 .md-table {
@@ -166,14 +168,14 @@
 
 .md-table table {
   border-collapse: collapse;
-  font: 14px/1.45 system-ui, -apple-system, sans-serif;
+  font: 14px/1.45 var(--jaspers-font-sans, system-ui, -apple-system, sans-serif);
   font-variant-numeric: tabular-nums;
 }
 
 .md-table th,
 .md-table td {
   padding: 6px 12px;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid var(--jaspers-border, #e5e5e5);
   vertical-align: top;
 }
 
@@ -191,7 +193,7 @@
 }
 
 .md-footnote-ref {
-  color: #737373;
+  color: var(--jaspers-muted-foreground, #737373);
   font-size: 0.75em;
 }
 
@@ -199,7 +201,7 @@
   display: grid;
   grid-template-columns: auto 1fr;
   column-gap: 6px;
-  color: #737373;
+  color: var(--jaspers-muted-foreground, #737373);
   font-size: 13px;
 }
 
@@ -209,11 +211,11 @@
   top: 6px;
   right: 14px;
   padding: 2px 8px;
-  border: 1px solid #e5e5e5;
+  border: 1px solid var(--jaspers-border, #e5e5e5);
   border-radius: 0;
-  background: #fff;
-  color: #737373;
-  font: 11px/16px system-ui, -apple-system, sans-serif;
+  background: var(--jaspers-background, #fff);
+  color: var(--jaspers-muted-foreground, #737373);
+  font: 11px/16px var(--jaspers-font-sans, system-ui, -apple-system, sans-serif);
   cursor: pointer;
   opacity: 0;
   transition: opacity 120ms;
@@ -225,5 +227,5 @@
 }
 
 .md-copy:hover {
-  color: #171717;
+  color: var(--jaspers-foreground, #171717);
 }
