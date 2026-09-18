@@ -1,6 +1,6 @@
 {
   "name": "markdown",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Markdown document the Jaspers Terminal assistant writes on the grid.",
   "license": "MIT",
   "private": true,
